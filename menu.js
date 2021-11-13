@@ -85,28 +85,30 @@ const menu = [
         };
         return value
       }, ["all"])
-      const filtersBtns = filters.map(function(btns){
-        return `<button type="button" class="filter-btn" data-id=${btns}>
-                    ${btns}
+      const filtersBtns = filters.map(function(btn){
+        return `<button type="button" class="filter-btn" data-id=${btn}>
+                    ${btn}
                 </button>`
       }).join("")
       btns.innerHTML = filtersBtns;
 
-      const filterElements = document.querySelector(".filter-btn");
-      filterElements.addEventListener("click", function(e){
-        const currentBtn = e.currentTarget.dataset.id;
-        const menuCategory = menu.filter(function(menuItem){
-            if(menuItem.category = currentBtn){
-                return menuItem;
+      const filterElements = document.querySelectorAll(".filter-btn");
+      filterElements.forEach(function(method){
+        method.addEventListener("click", function(e){
+          const category = e.currentTarget.dataset.id;
+          const menuCategory = menu.filter(function(menuItem){
+            if( menuItem.category == category){
+              return menuItem
             }
-        }); 
-        if(currentBtn == "all"){
-            displayAll(menu)
-        }else{
+          });
+          if(category == "all"){
+            return displayAll(menu);
+          }else{
             displayAll(menuCategory)
-        }
-        
+          }
+        });
       });
+     
   });
 
 
