@@ -74,7 +74,7 @@ const menu = [
   ];
 
   const section = document.querySelector(".section-center");
-  const btns = document.querySelector(".btn-container")
+  
 
   window.addEventListener("DOMContentLoaded", function(){
     displayAll(menu)
